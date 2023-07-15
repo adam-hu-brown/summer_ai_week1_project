@@ -18,7 +18,7 @@ def manageAccountMenu():
     print("1. Edit my details")
     print("2. Add a friend")
     print("3. View all my friends")
-    print("4. View all my messages")
+    print("4. Block someone")
     print("5. <- Go back ")
     return input("Please Choose a number: ")
 
@@ -41,6 +41,25 @@ def createAccountMenu():
 def addFriendMenu(social_network_object):
     os.system('clear')
     print("")
+    print("Who would you like to add as a friend?")
+    for i in range(len(social_network_object.list_of_people)):
+        print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].age)
+
+    print(str(len(social_network_object.list_of_people)+1) + ". <- Go back")
+
+    return input("Please Choose a number: ")
+
+def showFriends(user_object):
+    os.system('clear')
+    print("")
+    for i in range(len(user_object.friendlist)):
+        print(str(i+1) + ".", user_object.friendlist[i].name, user_object.friendlist[i].age, user_object.friendlist[i].bio)
+    input("Press enter to go back ")
+
+def blockView(social_network_object):
+    os.system('clear')
+    print("")
+    print("Who would you like to block?")
     for i in range(len(social_network_object.list_of_people)):
         print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].age)
 
