@@ -90,6 +90,26 @@ if __name__ == "__main__":
                             input("Person blocked! Press enter to continue")
                             inner_block_choice = social_network_ui.manageAccountMenu()
                 if inner_menu_choice == "5":
+                    send_choice = social_network_ui.send_choice(ai_social_network)
+                    while True:
+                        if send_choice == str(len(ai_social_network.list_of_people)+1):
+                            break
+                        validnumber = False
+                        for i in range(len(ai_social_network.list_of_people)):
+                            if send_choice == str(i+1):
+                                validnumber = True
+                        if validnumber == False:
+                            send_choice = social_network_ui.send_choice(ai_social_network)
+                        else:
+                            os.system('clear')
+                            input("What message do you want to send?\n\n")
+                            os.system('clear')
+                            input("Message sent to " + ai_social_network.list_of_people[int(send_choice)-1].name + ". Press enter to continue ")
+                            send_choice = social_network_ui.send_choice(ai_social_network)
+                            
+                if inner_menu_choice == "6":
+                    pass
+                if inner_menu_choice == "7":
                     break
                 else:
                     inner_menu_choice = social_network_ui.manageAccountMenu()
