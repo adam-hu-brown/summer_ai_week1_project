@@ -1,4 +1,3 @@
-# You can implement user interface functions here.
 from social_network_classes import SocialNetwork,Person
 import os
 import social_network_classes
@@ -23,6 +22,7 @@ def manageAccountMenu():
     print("5. Send someone a message")
     print("6. View my messages")
     print("7. <- Go back ")
+    print("********************************************************")
     return input("Please Choose a number: ")
 
 def editAccountMenu():
@@ -33,62 +33,63 @@ def editAccountMenu():
     print("3. Edit my bio")
     print("4. View my details and bio")
     print("5. <- Go back ")
+    print("********************************************************")
     return input("Please Choose a number: ")
 
 def createAccountMenu():
     os.system('clear')
     print("")
-    newPerson = Person(input("Input name: "), input("\nInput age: "), input("\nInput bio: "))
-    return newPerson
+    person_object = Person(input("Input name: "), input("\nInput age: "), input("\nInput bio: "))
+    return person_object
     
 def addFriendMenu(social_network_object):
     os.system('clear')
     print("")
     print("Who would you like to add as a friend?")
     for i in range(len(social_network_object.list_of_people)):
-        print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].age)
-
+        print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].bio)
     print(str(len(social_network_object.list_of_people)+1) + ". <- Go back")
-
+    print("********************************************************")
     return input("Please Choose a number: ")
 
-def showFriends(user_object):
+def showFriendsMenu(user_object):
     os.system('clear')
     print("")
     for i in range(len(user_object.friendlist)):
         print(str(i+1) + ".", user_object.friendlist[i].name, user_object.friendlist[i].age, user_object.friendlist[i].bio)
-    input("Press enter to go back ")
+    return input(str(len(user_object.friendlist)+1) + ". <- Go back \n********************************************************\nPlease Choose a number: ")
 
-def blockView(social_network_object):
+def blockMenu(social_network_object):
     os.system('clear')
     print("")
     print("Who would you like to block?")
     for i in range(len(social_network_object.list_of_people)):
-        print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].age)
-
+        print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].bio)
     print(str(len(social_network_object.list_of_people)+1) + ". <- Go back")
-
+    print("********************************************************")
     return input("Please Choose a number: ")
 
-def send_choice(social_network_object):
+def sendMessageMenu(social_network_object):
     os.system('clear')
     print("")
     print("Who would you like to send a message to?")
     for i in range(len(social_network_object.list_of_people)):
-        print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].age)
+        print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].bio)
     print(str(len(social_network_object.list_of_people)+1) + ". <- Go back")
+    print("********************************************************")
     return input("Please Choose a number: ")
     
-def messageView(social_network_object):
+def selectSenderMenu(social_network_object):
     os.system('clear')
     print("")
     print("Who is the person sending the message?")
     for i in range(len(social_network_object.list_of_people)):
-        print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].age)
+        print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].bio)
     print(str(len(social_network_object.list_of_people)+1) + ". <- Go back")
+    print("********************************************************")
     return input("Please Choose a number: ")
 
-def viewmessages(user_object):
+def viewMessageMenu(user_object):
     os.system('clear')
     print("")
     print("Here are your messages:")
@@ -96,6 +97,6 @@ def viewmessages(user_object):
         print(str(i+1) + ".", user_object.messagelist[i])
         print("")
         print("")
-    return input("1. <- Go back \nPlease Choose a number: ")
+    return input(str(len(user_object.messagelist)+1) + ". <- Go back \n********************************************************\nPlease Choose a number: ")
 
     
