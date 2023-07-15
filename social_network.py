@@ -19,8 +19,24 @@ if __name__ == "__main__":
     while True: 
         if choice == "1":
             ai_social_network.add_account(social_network_ui.createAccountMenu())
-
         elif choice == "2":
+            message_select = social_network_ui.messageView(ai_social_network)
+            while True:
+                if message_select == str(len(ai_social_network.list_of_people)+1):
+                    break
+                validd = False
+                for i in range(len(ai_social_network.list_of_people)):
+                    if message_select == str(i+1):
+                        validd = True
+                if validd == False:
+                    message_select = social_network_ui.messageView(ai_social_network)
+                else:
+                    os.system('clear')
+                    user.recieveMessage(input("What message do you want to send?\n\n"), ai_social_network.list_of_people[int(message_select)-1])
+                    os.system('clear')
+                    input("Message sent to " + user.name + ". Press enter to continue ")
+                    message_select = social_network_ui.messageView(ai_social_network)
+        elif choice == "3":
             inner_menu_choice = social_network_ui.manageAccountMenu()
             #Handle inner menu here
             while True:
@@ -108,13 +124,16 @@ if __name__ == "__main__":
                             send_choice = social_network_ui.send_choice(ai_social_network)
                             
                 if inner_menu_choice == "6":
-                    pass
+                    social_network_ui.viewmessages(user)
+                    input("Press enter to continue. ")
+                    os.system('clear')
+                    inner_menu_choice = social_network_ui.manageAccountMenu()
                 if inner_menu_choice == "7":
                     break
                 else:
                     inner_menu_choice = social_network_ui.manageAccountMenu()
 
-        elif choice == "3":
+        elif choice == "4":
             os.system('clear')
             print("Thank you for visiting. Goodbye")
             break
