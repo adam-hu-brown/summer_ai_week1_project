@@ -7,8 +7,9 @@ def mainMenu():
     os.system('clear')
     print("")
     print("1. Create a new person")
-    print("2. Manage my account")
-    print("3. Quit")
+    print("2. Send a new message to yourself, from another user")
+    print("3. Manage my account")
+    print("4. Quit")
     print("********************************************************")
     return input("Please Choose a number: ")
 
@@ -77,4 +78,22 @@ def send_choice(social_network_object):
         print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].age)
     print(str(len(social_network_object.list_of_people)+1) + ". <- Go back")
     return input("Please Choose a number: ")
+    
+def messageView(social_network_object):
+    os.system('clear')
+    print("")
+    print("Who is the person sending the message?")
+    for i in range(len(social_network_object.list_of_people)):
+        print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].age)
+    print(str(len(social_network_object.list_of_people)+1) + ". <- Go back")
+    return input("Please Choose a number: ")
+
+def viewmessages(user_object):
+    os.system('clear')
+    print("")
+    print("Here are your messages:")
+    for i in range(len(user_object.messagelist)):
+        print(str(i+1) + ".", user_object.messagelist[i])
+        print("")
+        print("")
     
