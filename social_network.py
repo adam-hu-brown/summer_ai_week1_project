@@ -56,20 +56,51 @@ if __name__ == "__main__":
                             inner_inner_choice = social_network_ui.editAccountMenu()
                 if inner_menu_choice == "2":
                     inner_friend_choice = social_network_ui.addFriendMenu(ai_social_network)
-                    while True: 
+                    while True:
                         if inner_friend_choice == str(len(ai_social_network.list_of_people)+1):
                             break
+                        validnum = False
+                        for i in range(len(ai_social_network.list_of_people)):
+                            if inner_friend_choice == str(i+1):
+                                validnum = True
+                        if validnum == False:
+                            inner_friend_choice = social_network_ui.addFriendMenu(ai_social_network)
+                        else:
+                            user.add_friend(ai_social_network.list_of_people[int(inner_friend_choice)-1])
+                            os.system('clear')
+                            input("Friend Added! Press enter to continue ")
+                            inner_friend_choice = social_network_ui.addFriendMenu(ai_social_network)
+                if inner_menu_choice == "3":
+                    social_network_ui.showFriends(user)
+                    inner_menu_choice = social_network_ui.manageAccountMenu()
+                if inner_menu_choice == "4":
+                    inner_block_choice = social_network_ui.blockView(ai_social_network)
+                    while True:
+                        if inner_block_choice == str(len(ai_social_network.list_of_people)+1):
+                            break
+                        validn = False
+                        for i in range(len(ai_social_network.list_of_people)):
+                            if inner_block_choice == str(i+1):
+                                validn = True
+                        if validn == False:
+                            inner_block_choice = social_network_ui.blockView(ai_social_network)
+                        else:
+                            user.block(ai_social_network, ai_social_network.list_of_people[int(inner_block_choice)-1])
+                            os.system('clear')
+                            input("Person blocked! Press enter to continue")
+                            inner_block_choice = social_network_ui.manageAccountMenu()
                 if inner_menu_choice == "5":
                     break
                 else:
                     inner_menu_choice = social_network_ui.manageAccountMenu()
 
         elif choice == "3":
-            print("Thank you for visiting. Goodbye3")
+            os.system('clear')
+            print("Thank you for visiting. Goodbye")
             break
 
         else:
-            print("Your input is invalid. Try Again!")
+            choice = social_network_ui.mainMenu()
         
         #restart menu
         choice = social_network_ui.mainMenu()
