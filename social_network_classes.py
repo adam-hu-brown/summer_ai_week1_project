@@ -28,15 +28,14 @@ class User:
         self.age = age
         self.bio = bio
         self.friendlist = []
+        self.messagelist = []
     def block(self, social_network_object, person_object):
         social_network_object.list_of_people.remove(person_object)
     def add_friend(self, person_object):
         #implement adding friend. Hint add to self.friendlist
         self.friendlist.append(person_object)
 
-    def send_message(self):
-        #implement sending message to friend here
-        pass
+        
 
 class Person:
     def __init__(self, name, age, bio):
