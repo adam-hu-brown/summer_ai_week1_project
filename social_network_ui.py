@@ -1,11 +1,12 @@
 # You can implement user interface functions here.
-from social_network_classes import SocialNetwork
+from social_network_classes import SocialNetwork,Person
 import os
+import social_network_classes
 
 def mainMenu():
     os.system('clear')
     print("")
-    print("1. Create a new account")
+    print("1. Create a new person")
     print("2. Manage my account")
     print("3. Quit")
     print("********************************************************")
@@ -30,4 +31,19 @@ def editAccountMenu():
     print("4. View my details and bio")
     print("5. <- Go back ")
     return input("Please Choose a number: ")
+
+def createAccountMenu():
+    os.system('clear')
+    print("")
+    newPerson = Person(input("Input name: "), input("\nInput age: "), input("\nInput bio: "))
+    return newPerson
     
+def addFriendMenu(social_network_object):
+    os.system('clear')
+    print("")
+    for i in range(len(social_network_object.list_of_people)):
+        print(str(i+1)  + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].age)
+
+    print(str(len(social_network_object.list_of_people)+1) + ". <- Go back")
+
+    return input("Please Choose a number: ")
