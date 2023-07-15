@@ -34,6 +34,8 @@ class User:
     def add_friend(self, person_object):
         #implement adding friend. Hint add to self.friendlist
         self.friendlist.append(person_object)
+    def recieveMessage(self, message, person_object):
+        self.messagelist.append("From " + person_object.name + ":\n      " + message)
 
         
 
