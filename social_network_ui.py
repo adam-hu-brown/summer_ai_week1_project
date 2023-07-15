@@ -96,4 +96,6 @@ def viewmessages(user_object):
         print(str(i+1) + ".", user_object.messagelist[i])
         print("")
         print("")
+    return input("1. <- Go back \nPlease Choose a number: ")
+
     
