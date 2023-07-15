@@ -124,10 +124,12 @@ if __name__ == "__main__":
                             send_choice = social_network_ui.send_choice(ai_social_network)
                             
                 if inner_menu_choice == "6":
-                    social_network_ui.viewmessages(user)
-                    input("Press enter to continue. ")
-                    os.system('clear')
-                    inner_menu_choice = social_network_ui.manageAccountMenu()
+                    viewchoice = social_network_ui.viewmessages(user)
+                    while True:
+                        if viewchoice == "1":
+                            break
+                        else:
+                           viewchoice = social_network_ui.viewmessages(user) 
                 if inner_menu_choice == "7":
                     break
                 else:
