@@ -1,13 +1,21 @@
 from social_network_classes import SocialNetwork,User,Person
 import social_network_ui
 import os
+import json
 
 #Create instance of main social network object
 ai_social_network = SocialNetwork()
 
 #Create the user
 user = User("my_name", "my_age", "my_bio")
-
+ai_social_network.reload_social_media(user)
+with open('user_info.json', 'r') as f:
+    data = f.read()
+    data = json.loads(data)
+    for i in data:
+        user.name = i['name']
+        user.age = i['age']
+        user.bio = i['bio']
 if __name__ == "__main__":
     print("########################################################")
     print("          Welcome to Summer AI Social Network")
@@ -75,17 +83,21 @@ if __name__ == "__main__":
                         if valid_friend_choice == False:
                             friend_choice = social_network_ui.addFriendMenu(ai_social_network)
                         else:
-                            user.addFriend(ai_social_network.list_of_people[int(friend_choice)-1])
+                            ai_social_network.list_of_people[int(friend_choice)-1].isFriend = "1"
                             os.system('clear')
                             input("Friend Added! Press enter to continue ")
                             friend_choice = social_network_ui.addFriendMenu(ai_social_network)
                 if edit_account_choice == "3":
-                    show_friends_choice = social_network_ui.showFriendsMenu(user)
+                    show_friends_choice = social_network_ui.showFriendsMenu(ai_social_network)
                     while True:
-                        if show_friends_choice == str(len(user.friendlist)+1):
+                        counter = 0
+                        for i in range(len(ai_social_network.list_of_people)):
+                            if ai_social_network.list_of_people[i].isFriend == "1":
+                                counter+=1
+                        if show_friends_choice == str(counter+1):
                             break
                         else:
-                            show_friends_choice = social_network_ui.showFriendsMenu(user)
+                            show_friends_choice = social_network_ui.showFriendsMenu(ai_social_network)
                 if edit_account_choice == "4":
                     block_choice = social_network_ui.blockMenu(ai_social_network)
                     while True:
@@ -101,7 +113,7 @@ if __name__ == "__main__":
                             user.block(ai_social_network, ai_social_network.list_of_people[int(block_choice)-1])
                             os.system('clear')
                             input("Person blocked! Press enter to continue")
-                            block_choice = social_network_ui.manageAccountMenu()
+                            block_choice = social_network_ui.blockMenu(ai_social_network)
                 if edit_account_choice == "5":
                     send_choice = social_network_ui.sendMessageMenu(ai_social_network)
                     while True:
@@ -131,13 +143,10 @@ if __name__ == "__main__":
                 else:
                     edit_account_choice = social_network_ui.manageAccountMenu()
         elif choice == "4":
+            ai_social_network.save_social_media(user)
             os.system('clear')
             print("Thank you for visiting. Goodbye")
             break
         else:
             choice = social_network_ui.mainMenu()
         choice = social_network_ui.mainMenu()
-
-
-
-        
