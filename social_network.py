@@ -2,6 +2,8 @@ from social_network_classes import SocialNetwork,User,Person
 import social_network_ui
 import os
 import json
+import time
+import sys
 
 #Create instance of main social network object
 ai_social_network = SocialNetwork()
@@ -16,11 +18,32 @@ with open('user_info.json', 'r') as f:
         user.name = i['name']
         user.age = i['age']
         user.bio = i['bio']
-if __name__ == "__main__":
+if user.name == "my_name":
+    print("")
     print("########################################################")
     print("          Welcome to Summer AI Social Network")
     print("########################################################")
-    
+    print("")
+    print("Let's start by creating your account. ")
+    print("")
+    user.name = input("Input your name: ")
+    print("")
+    user.age = input("Input your age: ")
+    print("")
+    user.bio = input("Input your bio: ")
+    os.system('clear')
+    create_message = "Creating your account.."
+    print(create_message)
+    for i in range(20):
+        os.system('clear')
+        create_message = create_message + "."
+        print(create_message)
+        time.sleep(0.25)
+    os.system('clear')
+        
+
+
+if __name__ == "__main__":
     choice = social_network_ui.mainMenu()
     while True: 
         if choice == "1":
@@ -75,7 +98,7 @@ if __name__ == "__main__":
                             break
                         else:
                             edit_detail_choice = social_network_ui.editAccountMenu()
-                elif edit_account_choice == "2":
+                if edit_account_choice == "2":
                     friend_choice = social_network_ui.addFriendMenu(ai_social_network)
                     while True:
                         if friend_choice == str(len(ai_social_network.list_of_people)+1):
@@ -91,7 +114,7 @@ if __name__ == "__main__":
                             os.system('clear')
                             input("Friend Added! Press enter to continue ")
                             friend_choice = social_network_ui.addFriendMenu(ai_social_network)
-                elif edit_account_choice == "3":
+                if edit_account_choice == "3":
                     show_friends_choice = social_network_ui.showFriendsMenu(ai_social_network)
                     while True:
                         counter = 0
@@ -102,7 +125,7 @@ if __name__ == "__main__":
                             break
                         else:
                             show_friends_choice = social_network_ui.showFriendsMenu(ai_social_network)
-                elif edit_account_choice == "4":
+                if edit_account_choice == "4":
                     block_choice = social_network_ui.blockMenu(ai_social_network)
                     while True:
                         if block_choice == str(len(ai_social_network.list_of_people)+1):
@@ -118,7 +141,7 @@ if __name__ == "__main__":
                             os.system('clear')
                             input("Person blocked! Press enter to continue")
                             block_choice = social_network_ui.blockMenu(ai_social_network)
-                elif edit_account_choice == "5":
+                if edit_account_choice == "5":
                     send_choice = social_network_ui.sendMessageMenu(ai_social_network)
                     while True:
                         if send_choice == str(len(ai_social_network.list_of_people)+1):
@@ -135,14 +158,30 @@ if __name__ == "__main__":
                             os.system('clear')
                             input("Message sent to " + ai_social_network.list_of_people[int(send_choice)-1].name + ". Press enter to continue ")
                             send_choice = social_network_ui.sendMessageMenu(ai_social_network)             
-                elif edit_account_choice == "6":
+                if edit_account_choice == "6":
                     view_choice = social_network_ui.viewMessageMenu(user)
                     while True:
                         if view_choice == str(len(user.messagelist)+1):
                             break
                         else:
                            view_choice = social_network_ui.viewMessageMenu(user) 
-                elif edit_account_choice == "7":
+                if edit_account_choice == "7":
+                    remove_choice = social_network_ui.removeMessageMenu(user)
+                    while True:
+                        if remove_choice == str(len(user.messagelist)+1):
+                            break
+                        valid_remove_choice = False
+                        for i in range(len(user.messagelist)):
+                            if remove_choice == str(i+1):
+                                valid_remove_choice = True  
+                        if valid_remove_choice == False:
+                            remove_choice = social_network_ui.removeMessageMenu(user)
+                        else: 
+                            user.messagelist.remove(user.messagelist[int(remove_choice)-1])
+                            os.system('clear')
+                            input("Message deleted! Press enter to continue")
+                            remove_choice = social_network_ui.removeMessageMenu(user)
+                if edit_account_choice == "8":
                     break
                 else:
                     edit_account_choice = social_network_ui.manageAccountMenu()
