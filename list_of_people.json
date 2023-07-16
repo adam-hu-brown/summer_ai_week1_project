@@ -1,0 +1,14 @@
+[
+  {
+    "age": "33",
+    "bio": "Hello",
+    "isFriend": "0",
+    "name": "John"
+  },
+  {
+    "age": "56",
+    "bio": "Bio",
+    "isFriend": "0",
+    "name": "john"
+  }
+]
