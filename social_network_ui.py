@@ -21,7 +21,8 @@ def manageAccountMenu():
     print("4. Block someone")
     print("5. Send someone a message")
     print("6. View my messages")
-    print("7. <- Go back ")
+    print("7. Delete messages")
+    print("8. <- Go back ")
     print("********************************************************")
     return input("Please Choose a number: ")
 
@@ -102,4 +103,14 @@ def viewMessageMenu(user_object):
         print("")
     return input(str(len(user_object.messagelist)+1) + ". <- Go back \n********************************************************\nPlease Choose a number: ")
 
-    
+def removeMessageMenu(user_object):
+    os.system('clear')
+    print("")
+    print("Which message would you like to delete?")
+    for i in range(len(user_object.messagelist)):
+        print(str(i+1) + ".", user_object.messagelist[i])
+        print("")
+        print("")
+    print(str(len(user_object.messagelist)+1) + ". <- Go back")
+    print("********************************************************")
+    return input("Please Choose a number: ")
