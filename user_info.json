@@ -1,8 +1,8 @@
 [
   {
-    "age": "age",
-    "bio": "bio",
+    "age": "my_age",
+    "bio": "my_bio",
     "messagelist": [],
-    "name": "name"
+    "name": "my_name"
   }
 ]
