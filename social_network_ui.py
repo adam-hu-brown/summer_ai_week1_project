@@ -39,7 +39,7 @@ def editAccountMenu():
 def createAccountMenu():
     os.system('clear')
     print("")
-    person_object = Person(input("Input name: "), input("\nInput age: "), input("\nInput bio: "))
+    person_object = Person(input("Input name: "), input("\nInput age: "), input("\nInput bio: "), "0")
     return person_object
     
 def addFriendMenu(social_network_object):
@@ -52,12 +52,15 @@ def addFriendMenu(social_network_object):
     print("********************************************************")
     return input("Please Choose a number: ")
 
-def showFriendsMenu(user_object):
+def showFriendsMenu(social_network_object):
     os.system('clear')
     print("")
-    for i in range(len(user_object.friendlist)):
-        print(str(i+1) + ".", user_object.friendlist[i].name, user_object.friendlist[i].age, user_object.friendlist[i].bio)
-    return input(str(len(user_object.friendlist)+1) + ". <- Go back \n********************************************************\nPlease Choose a number: ")
+    counter = 0
+    for i in range(len(social_network_object.list_of_people)):
+        if social_network_object.list_of_people[i].isFriend == "1":
+            print(str(counter+1) + ".", social_network_object.list_of_people[i].name, social_network_object.list_of_people[i].age, social_network_object.list_of_people[i].bio)
+            counter+=1
+    return input(str(counter+1) + ". <- Go back \n********************************************************\nPlease Choose a number: ")
 
 def blockMenu(social_network_object):
     os.system('clear')
