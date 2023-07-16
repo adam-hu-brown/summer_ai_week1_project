@@ -41,7 +41,7 @@ class User:
 
     def block(self, social_network_object, person_object):
         social_network_object.list_of_people.remove(person_object)
-
+    
     def recieveMessage(self, message, person_object):
         self.messagelist.append("From " + person_object.name + ":\n      " + message)
 
