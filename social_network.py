@@ -51,27 +51,31 @@ if __name__ == "__main__":
                         if edit_detail_choice == "1":
                             os.system('clear')
                             user.name = input("Input Name: ")
+                            os.system('clear')
                             edit_detail_choice = social_network_ui.editAccountMenu()
-                        if edit_detail_choice == "2":
+                        elif edit_detail_choice == "2":
                             os.system('clear')
                             user.age = input("Input Age: ")
+                            os.system('clear')
                             edit_detail_choice = social_network_ui.editAccountMenu()
-                        if edit_detail_choice == "3":
+                        elif edit_detail_choice == "3":
                             os.system('clear')
                             user.bio = input("Input Bio: ")
+                            os.system('clear')
                             edit_detail_choice = social_network_ui.editAccountMenu()   
-                        if edit_detail_choice == "4":
+                        elif edit_detail_choice == "4":
                             os.system('clear')
                             print("Name:", user.name)
                             print("Age:", user.age)
                             print("Bio:", user.bio)
                             input("Press enter to go back\n")
+                            os.system('clear')
                             edit_detail_choice = social_network_ui.editAccountMenu()
-                        if edit_detail_choice == "5":
+                        elif edit_detail_choice == "5":
                             break
                         else:
                             edit_detail_choice = social_network_ui.editAccountMenu()
-                if edit_account_choice == "2":
+                elif edit_account_choice == "2":
                     friend_choice = social_network_ui.addFriendMenu(ai_social_network)
                     while True:
                         if friend_choice == str(len(ai_social_network.list_of_people)+1):
@@ -87,7 +91,7 @@ if __name__ == "__main__":
                             os.system('clear')
                             input("Friend Added! Press enter to continue ")
                             friend_choice = social_network_ui.addFriendMenu(ai_social_network)
-                if edit_account_choice == "3":
+                elif edit_account_choice == "3":
                     show_friends_choice = social_network_ui.showFriendsMenu(ai_social_network)
                     while True:
                         counter = 0
@@ -98,7 +102,7 @@ if __name__ == "__main__":
                             break
                         else:
                             show_friends_choice = social_network_ui.showFriendsMenu(ai_social_network)
-                if edit_account_choice == "4":
+                elif edit_account_choice == "4":
                     block_choice = social_network_ui.blockMenu(ai_social_network)
                     while True:
                         if block_choice == str(len(ai_social_network.list_of_people)+1):
@@ -114,7 +118,7 @@ if __name__ == "__main__":
                             os.system('clear')
                             input("Person blocked! Press enter to continue")
                             block_choice = social_network_ui.blockMenu(ai_social_network)
-                if edit_account_choice == "5":
+                elif edit_account_choice == "5":
                     send_choice = social_network_ui.sendMessageMenu(ai_social_network)
                     while True:
                         if send_choice == str(len(ai_social_network.list_of_people)+1):
@@ -131,14 +135,14 @@ if __name__ == "__main__":
                             os.system('clear')
                             input("Message sent to " + ai_social_network.list_of_people[int(send_choice)-1].name + ". Press enter to continue ")
                             send_choice = social_network_ui.sendMessageMenu(ai_social_network)             
-                if edit_account_choice == "6":
+                elif edit_account_choice == "6":
                     view_choice = social_network_ui.viewMessageMenu(user)
                     while True:
                         if view_choice == str(len(user.messagelist)+1):
                             break
                         else:
                            view_choice = social_network_ui.viewMessageMenu(user) 
-                if edit_account_choice == "7":
+                elif edit_account_choice == "7":
                     break
                 else:
                     edit_account_choice = social_network_ui.manageAccountMenu()
