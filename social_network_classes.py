@@ -1,3 +1,5 @@
+#TODO: Add deleting messages
+
 import os
 import json
 class SocialNetwork:
@@ -29,9 +31,6 @@ class SocialNetwork:
             data = json.loads(data)
             for message in data:
                 user_object.messagelist.append(message)
- 
-
-        
 
 class User:
     def __init__(self, name, age, bio):
